@@ -33,18 +33,18 @@ const RootQuery = new GraphQLObjectType({
   }
 })
 
-const Mutation = new GraphQLObjectType({
-  name: 'Mutations',
-  fields: {
-    AddGrade: AddGrade,
-    AddSubject: AddSubject,
-    AddClassroom: AddClassroom,
-    AddTeacher: AddTeacher,
-    AddStudent: AddStudent
-  }
-})
+// const Mutation = new GraphQLObjectType({
+//   name: 'Mutations',
+//   fields: {
+//     AddGrade: AddGrade,
+//     AddSubject: AddSubject,
+//     AddClassroom: AddClassroom,
+//     AddTeacher: AddTeacher,
+//     AddStudent: AddStudent
+//   }
+// })
 
 module.exports = new GraphQLSchema({
   query: RootQuery,
-  mutation: Mutation
+  // mutation: Mutation
 })

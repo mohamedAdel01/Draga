@@ -45,7 +45,6 @@ const StationType = new GraphQLObjectType({
 })
 
 // TRAVEL TYPE
-
 const TravelType = new GraphQLObjectType({
   id: {type: GraphQLID},
   startAt: {type: GraphQLString},

@@ -1,9 +1,9 @@
 // requirements
 const express = require('express')
-// const graphqlHTTP = require('express-graphql')
+const graphqlHTTP = require('express-graphql')
 const cors = require('cors')
 require('dotenv').config()
-// const schema = require('./src/graphQL/schema')
+const schema = require('./src/graphQL/schema')
 
 // import database config
 require('./config/mongo')
