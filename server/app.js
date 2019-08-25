@@ -15,10 +15,23 @@ const app = express()
 app.use(cors())
 
 // graphql for handle requests
-// app.use('/graphql', graphqlHTTP({
-//   schema,
-//   graphiql: true
-// }))
+app.use('/graphql', graphqlHTTP({
+  schema,
+  graphiql: true
+}))
+
+
+// test database
+// let Station = require('./src/models/Station')
+// for(let i = 0; i < 10; i++) {
+//   let station = new Station({
+//     type: `Station${i}`,
+
+//   })
+
+
+//   station.save()
+// }
 
 // listen to PORT
 app.listen(process.env.PORT || 5000, () => {

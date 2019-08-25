@@ -23,7 +23,7 @@ const BikeType = new GraphQLObjectType({
     type: {type: GraphQLString},
     imgUrl: {type: GraphQLString},
     hourPrice: {type: GraphQLFloat},
-    barcode: {type: GraphQLInt},
+    barcode: {type: GraphQLInt}
 
   // Relational Data
   // here data for station
@@ -46,9 +46,12 @@ const StationType = new GraphQLObjectType({
 
 // TRAVEL TYPE
 const TravelType = new GraphQLObjectType({
-  id: {type: GraphQLID},
-  startAt: {type: GraphQLString},
-  endAt: {type: GraphQLString},
+  name: 'Travel',
+  fields: () => ({
+    id: {type: GraphQLID},
+    startAt: {type: GraphQLString},
+    endAt: {type: GraphQLString}
+  })
 
 // Relation Data
 // data for all three
