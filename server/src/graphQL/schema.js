@@ -35,7 +35,6 @@ const Mutation = new GraphQLObjectType({
     CreateBike: CreateBike,
     CreateStation: CreateStation,
     CreateTravel: CreateTravel
-
   }
 })
 
