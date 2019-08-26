@@ -11,7 +11,8 @@ const UserType = new GraphQLObjectType({
     phoneNumber: {type: GraphQLInt},
     imgUrl: {type: GraphQLString},
     password: {type: GraphQLString},
-    wallet: {type: GraphQLFloat}
+    wallet: { type: GraphQLFloat },
+    createdAt: {type: GraphQLString}
   })
 })
 
@@ -23,7 +24,8 @@ const BikeType = new GraphQLObjectType({
     type: {type: GraphQLString},
     imgUrl: {type: GraphQLString},
     hourPrice: {type: GraphQLFloat},
-    barcode: {type: GraphQLInt}
+    barcode: { type: GraphQLInt },
+    createdAt: {type: GraphQLString}
 
   // Relational Data
   // here data for station
@@ -37,7 +39,8 @@ const StationType = new GraphQLObjectType({
     id: {type: GraphQLID},
     address: {type: GraphQLString},
     langitude: {type: GraphQLFloat},
-    latitude: {type: GraphQLFloat},
+    latitude: { type: GraphQLFloat },
+    createdAt: {type: GraphQLString}
 
   // Relational Data
   // here data for bikes
@@ -50,17 +53,15 @@ const TravelType = new GraphQLObjectType({
   fields: () => ({
     id: {type: GraphQLID},
     startAt: {type: GraphQLString},
-    endAt: {type: GraphQLString}
+    endAt: { type: GraphQLString },
+    cost: {type: GraphQLFloat}
+  // Relation Data
+  // data for all three
   })
-
-// Relation Data
-// data for all three
-
 })
 
 module.exports = {
   UserType,
   BikeType,
   StationType,
-  TravelType
-}
+TravelType}
