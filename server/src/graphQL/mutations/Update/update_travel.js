@@ -16,16 +16,21 @@ const TravelUpdateMutation = {
     cost: { type: GraphQLFloat },
     endAt: { type: GraphQLString }
   },
-  resolve(parent, args) {
+  resolve(root, args, context, info) {
     let TravelUpdatedData = {
       stationToId: args.stationToId,
       cost: args.cost,
+      state: false,
       endAt: args.endAt
     }
 
-    UserModel.findOneAndUpdate({_id: parent.userId}, {$inc: {wallet: -(args.cost)} })
-    BikeModel.findOneAndUpdate({_id: parent.bikeId}, {stationId: args.stationToId})
-    return TravelModel.findOneAndUpdate({_id: parent.id}, TravelUpdatedData)
+    // console.log(parent)
+    console.log(TravelType)
+
+    return root
+  // UserModel.findOneAndUpdate({_id: parent.userId}, {$inc: {wallet: -(args.cost)} })
+  // BikeModel.findOneAndUpdate({_id: parent.bikeId}, {stationId: args.stationToId})
+  // return TravelModel.findOneAndUpdate({_id: parent.id}, TravelUpdatedData)
   }
 }
 
