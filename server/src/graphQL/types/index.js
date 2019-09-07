@@ -37,6 +37,7 @@ const StationType = new GraphQLObjectType({
   name: 'Station',
   fields: () => ({
     id: {type: GraphQLID},
+    name: {type: GraphQLString},
     address: {type: GraphQLString},
     langitude: {type: GraphQLFloat},
     latitude: { type: GraphQLFloat },

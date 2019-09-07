@@ -10,12 +10,14 @@ const StationModel = require('../../../models/Station')
 const StationMutation = {
   type: StationType,
   args: {
+    name: {type: GraphQLString},
     address: {type: GraphQLString},
     langitude: {type: GraphQLFloat},
     latitude: { type: GraphQLFloat }
   },
   resolve(parent, args) {
     let station = new StationModel({
+      name: args.name,
       address: args.address,
       langitude: args.langitude,
       latitude: args.latitude
