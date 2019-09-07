@@ -20,17 +20,15 @@ app.use('/graphql', graphqlHTTP({
   graphiql: true
 }))
 
-
 // test database
-// let Station = require('./src/models/Station')
-// for(let i = 0; i < 10; i++) {
-//   let station = new Station({
-//     type: `Station${i}`,
+// let User = require('./src/models/User')
+// for (let i = 1; i < 10; i++) {
+//   let user = new User({
+//     username: `Station${i}`
 
 //   })
 
-
-//   station.save()
+//   user.save()
 // }
 
 // listen to PORT

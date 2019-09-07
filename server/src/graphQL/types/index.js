@@ -24,7 +24,7 @@ const BikeType = new GraphQLObjectType({
     type: {type: GraphQLString},
     imgUrl: {type: GraphQLString},
     hourPrice: {type: GraphQLFloat},
-    barcode: { type: GraphQLInt },
+    code: { type: GraphQLInt },
     createdAt: {type: GraphQLString}
 
   // Relational Data

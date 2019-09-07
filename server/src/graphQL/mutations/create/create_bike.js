@@ -13,14 +13,14 @@ const BikeMutation = {
     type: {type: GraphQLString},
     imgUrl: {type: GraphQLString},
     hourPrice: {type: GraphQLFloat},
-    barcode: { type: GraphQLInt }
+    code: { type: GraphQLInt }
   },
   resolve(parent, args) {
     let bike = new BikeModel({
       type: args.type,
       imgUrl: args.imgUrl,
       hourPrice: args.hourPrice,
-      barcode: args.barcode
+      code: args.code
     })
     return bike.save()
   }

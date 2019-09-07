@@ -5,7 +5,7 @@ const Bike = new Schema({
   type: String,
   imgUrl: String,
   hourPrice: Number,
-  barcode: Number,
+  code: String,
   stationId: String,
   createdAt: {
     type: Date,
