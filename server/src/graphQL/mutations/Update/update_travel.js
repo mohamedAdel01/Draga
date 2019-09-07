@@ -9,7 +9,7 @@ const TravelModel = require('../../../models/Travel')
 const UserModel = require('../../../models/User')
 const BikeModel = require('../../../models/Bike')
 
-const TravelMutation = {
+const TravelUpdateMutation = {
   type: TravelType,
   args: {
     stationToId: { type: GraphQLID },
@@ -29,4 +29,4 @@ const TravelMutation = {
   }
 }
 
-module.exports = TravelMutation
+module.exports = TravelUpdateMutation

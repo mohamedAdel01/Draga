@@ -2,6 +2,8 @@ const graphql = require('graphql')
 const {GraphQLObjectType, GraphQLList, GraphQLInt, GraphQLFloat, GraphQLString, GraphQLID} = graphql
 const ObjectId = require('mongodb').ObjectID
 
+const BikeModel = require('../../models/Bike')
+
 // USER TYPE
 const UserType = new GraphQLObjectType({
   name: 'User',
@@ -41,7 +43,13 @@ const StationType = new GraphQLObjectType({
     address: {type: GraphQLString},
     langitude: {type: GraphQLFloat},
     latitude: { type: GraphQLFloat },
-    createdAt: {type: GraphQLString}
+    createdAt: {type: GraphQLString},
+    bikes: {
+      type: new GraphQLList(BikeType),
+      resolve(parent, args) {
+        return BikeModel.find({stationId: parent.id})
+      }
+    }
 
   // Relational Data
   // here data for bikes
