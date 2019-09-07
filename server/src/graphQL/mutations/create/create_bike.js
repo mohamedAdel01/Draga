@@ -13,7 +13,7 @@ const BikeMutation = {
     type: {type: GraphQLString},
     imgUrl: {type: GraphQLString},
     hourPrice: {type: GraphQLFloat},
-    code: { type: GraphQLInt }
+    code: { type: GraphQLString }
   },
   resolve(parent, args) {
     let bike = new BikeModel({
