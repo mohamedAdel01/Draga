@@ -10,11 +10,15 @@ const TravelModel = require('../../../models/Travel')
 const TravelMutation = {
   type: TravelType,
   args: {
-    endAt: { type: GraphQLString }
+    stationFromId: { type: GraphQLID },
+    userId: { type: GraphQLID },
+    bikeId: { type: GraphQLID }
   },
   resolve(parent, args) {
     let travel = new TravelModel({
-      endAt: args.endAt
+      stationFromId: args.stationFromId,
+      userId: args.userId,
+      bikeId: args.bikeId
     })
     return travel.save()
   }
