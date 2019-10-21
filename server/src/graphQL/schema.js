@@ -9,12 +9,12 @@ const {travel, travels} = require('./queries/Travel')
 
 // MUTATIONS
 // Create
-const CreateUser = require('./mutations/create/create_user')
-const CreateBike = require('./mutations/create/create_bike')
-const CreateStation = require('./mutations/create/create_station')
-const CreateTravel = require('./mutations/create/create_travel')
+const CreateUser = require('./mutations/create/createUser')
+const CreateBike = require('./mutations/create/createBike')
+const CreateStation = require('./mutations/create/createStation')
+const CreateTravel = require('./mutations/create/createTravel')
 // Update
-const UpdateTravel = require('./mutations/Update/update_travel')
+const UpdateTravel = require('./mutations/Update/updateTravel')
 
 // GRAPHQL ROOT QUERY
 const RootQuery = new GraphQLObjectType({
