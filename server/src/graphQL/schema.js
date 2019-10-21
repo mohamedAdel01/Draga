@@ -14,7 +14,7 @@ const CreateBike = require('./mutations/create/create_bike')
 const CreateStation = require('./mutations/create/create_station')
 const CreateTravel = require('./mutations/create/create_travel')
 // Update
-const UpdateTravel = require('./mutations/update/update_travel')
+const UpdateTravel = require('./mutations/Update/update_travel')
 
 // GRAPHQL ROOT QUERY
 const RootQuery = new GraphQLObjectType({
