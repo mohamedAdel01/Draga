@@ -2,10 +2,10 @@ const graphql = require('graphql')
 const {GraphQLObjectType, GraphQLSchema} = graphql
 
 // GRAPHQL QUERIES
-const {user, users} = require('./queries/User')
-const {bike, bikes} = require('./queries/Bike')
-const {station, stations} = require('./queries/Station')
-const {travel, travels} = require('./queries/Travel')
+const {user, users} = require('./queries/user')
+const {bike, bikes} = require('./queries/bike')
+const {station, stations} = require('./queries/station')
+const {travel, travels} = require('./queries/travel')
 
 // MUTATIONS
 // Create
