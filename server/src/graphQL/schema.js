@@ -9,7 +9,7 @@ const {travel, travels} = require('./queries/travel')
 
 // MUTATIONS
 // Create
-const CreateUser = require('./mutations/create/createUser')
+const SignUser = require('./mutations/auth/sign')
 const CreateBike = require('./mutations/create/createBike')
 const CreateStation = require('./mutations/create/createStation')
 const CreateTravel = require('./mutations/create/createTravel')
@@ -34,7 +34,7 @@ const RootQuery = new GraphQLObjectType({
 const Mutation = new GraphQLObjectType({
   name: 'Mutations',
   fields: {
-    CreateUser: CreateUser,
+    SignUser: SignUser,
     CreateBike: CreateBike,
     CreateStation: CreateStation,
     CreateTravel: CreateTravel,

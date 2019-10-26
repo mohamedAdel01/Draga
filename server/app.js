@@ -1,5 +1,6 @@
 // requirements
 const express = require('express')
+const bcrypt = require('bcrypt')
 const graphqlHTTP = require('express-graphql')
 const cors = require('cors')
 require('dotenv').config()
