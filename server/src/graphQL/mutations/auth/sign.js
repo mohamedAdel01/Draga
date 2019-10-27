@@ -2,7 +2,7 @@ const graphql = require('graphql')
 const {GraphQLObjectType, GraphQLList, GraphQLInt, GraphQLFloat, GraphQLString, GraphQLID} = graphql
 
 const { hashPassword } = require('../../../polices/authBcrypt')
-const { signToken } = require('../../../polices/authToken')
+// const { signToken, verifyJwt } = require('../../../polices/authToken')
 
 // GRAPHQL TYPES
 const {UserType} = require('../../types/index')
@@ -21,22 +21,40 @@ const UserMutation = {
   },
   async resolve(parent, args) {
 
-    let user = new UserModel({
-      username: args.username,
-      phoneNumber: args.phoneNumber,
-      imgUrl: args.imgUrl,
-      password: await hashPassword(args.password),
-      wallet: args.wallet
-    })
+    try {
 
-    let token = await signToken({
+      // arrange user Modal
+      let user = new UserModel({
         username: args.username,
-        password: args.password,
-    })
+        phoneNumber: args.phoneNumber,
+        imgUrl: args.imgUrl,
+        password: await hashPassword(args.password),
+        wallet: args.wallet
+      })
+  
+      // save user in DB
+      let data = await user.save()
 
-    return {
-        username: token
+      // create Token
+      let tokenObj = await signToken({
+        id: data.id,
+        username: data.username,
+      })
+
     }
+
+    catch (error){
+      return error
+    }
+    
+  
+
+
+    // let data = await verifyJwt(tokenObj)
+
+    // console.log(data)
+
+    // return data
 
 
     // return user.save()
