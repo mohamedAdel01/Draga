@@ -13,6 +13,8 @@ const UserType = new GraphQLObjectType({
     phoneNumber: {type: GraphQLInt},
     imgUrl: {type: GraphQLString},
     password: {type: GraphQLString},
+    token: {type: GraphQLString},
+    refreshToken: {type: GraphQLString},
     wallet: { type: GraphQLFloat },
     createdAt: {type: GraphQLString}
   })
