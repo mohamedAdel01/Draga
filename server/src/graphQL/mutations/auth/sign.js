@@ -2,7 +2,7 @@ const graphql = require('graphql')
 const {GraphQLObjectType, GraphQLList, GraphQLInt, GraphQLFloat, GraphQLString, GraphQLID} = graphql
 
 const { hashPassword } = require('../../../polices/authBcrypt')
-// const { signToken, verifyJwt } = require('../../../polices/authToken')
+const { signToken, verifyJwt } = require('../../../polices/authToken')
 
 // GRAPHQL TYPES
 const {UserType} = require('../../types/index')
@@ -21,43 +21,48 @@ const UserMutation = {
   },
   async resolve(parent, args) {
 
+    /*
+    
+      ** HINTS **
+    // ** WE need first to check if this user is exist before
+    // ** WE need to make validation on inputs 
+    // ** WE need to make required inputs
+    // ** HANDLE errors and send it back to front-end
+
+    */
+
     try {
 
       // arrange user Modal
       let user = new UserModel({
         username: args.username,
         phoneNumber: args.phoneNumber,
-        imgUrl: args.imgUrl,
+        imgUrl: args.imgUrl.dd,
         password: await hashPassword(args.password),
         wallet: args.wallet
       })
   
       // save user in DB
-      let data = await user.save()
+      let userData = await user.save()
 
       // create Token
-      let tokenObj = await signToken({
-        id: data.id,
-        username: data.username,
+      let tokens = await signToken({
+        id: userData.id,
+        username: userData.username,
       })
 
-    }
+      return {
+        ...userData,
+        ...tokens
+      }
 
-    catch (error){
-      return error
+    } catch (error) {
+        return {
+          mssg: 'error in bla bla',
+          error
+        }
     }
     
-  
-
-
-    // let data = await verifyJwt(tokenObj)
-
-    // console.log(data)
-
-    // return data
-
-
-    // return user.save()
   }
 }
 
