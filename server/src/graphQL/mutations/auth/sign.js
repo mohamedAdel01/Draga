@@ -24,6 +24,7 @@ const UserMutation = {
     /*
     
       ** HINTS **
+    // ** CHECK if user is not loged in
     // ** WE need first to check if this user is exist before
     // ** WE need to make validation on inputs 
     // ** WE need to make required inputs
