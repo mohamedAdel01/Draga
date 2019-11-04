@@ -24,6 +24,7 @@ const UserMutation = {
     /*
     
       ** HINTS **
+    // ** CHECK if user is not loged in
     // ** WE need first to check if this user is exist before
     // ** WE need to make validation on inputs 
     // ** WE need to make required inputs
@@ -37,13 +38,13 @@ const UserMutation = {
       let user = new UserModel({
         username: args.username,
         phoneNumber: args.phoneNumber,
-        imgUrl: args.imgUrl.dd,
+        imgUrl: args.imgUrl,
         password: await hashPassword(args.password),
         wallet: args.wallet
       })
   
       // save user in DB
-      let userData = await user.save()
+      let userData = (await user.save()).toObject({ virtuals: true, minimize: true })
 
       // create Token
       let tokens = await signToken({
@@ -55,7 +56,7 @@ const UserMutation = {
         ...userData,
         ...tokens
       }
-
+      
     } catch (error) {
         return {
           mssg: 'error in bla bla',

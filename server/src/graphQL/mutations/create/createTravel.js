@@ -15,11 +15,13 @@ const TravelMutation = {
     bikeId: { type: GraphQLID }
   },
   resolve(parent, args) {
+    // let 
     let travel = new TravelModel({
       stationFromId: args.stationFromId,
       userId: args.userId,
       bikeId: args.bikeId
     })
+
     return travel.save()
   }
 }
