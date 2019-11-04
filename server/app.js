@@ -8,6 +8,16 @@ require('dotenv').config()
 // import database config
 require('./config/mongo')
 
+let token
+
+let loginMiddleware = (req, res, next) => {
+  token = req.header.auth_token
+}
+
+let root = {
+  auth_token: () => token
+}
+
 // run app
 const app = express()
 
@@ -17,6 +27,7 @@ app.use(cors())
 // graphql for handle requests
 app.use('/graphql', graphqlHTTP({
   schema,
+  rootValue: root,
   graphiql: true
 }))
 
