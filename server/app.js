@@ -8,14 +8,8 @@ require('dotenv').config()
 // import database config
 require('./config/mongo')
 
-let token
-
-let loginMiddleware = (req, res, next) => {
-  token = req.header.auth_token
-}
-
 let root = {
-  auth_token: () => token
+  auth_token: (args, req) => req.headers.auth_token
 }
 
 // run app
@@ -31,6 +25,12 @@ app.use('/graphql', graphqlHTTP({
   graphiql: true
 }))
 
+// listen to PORT
+app.listen(process.env.PORT || 5000, () => {
+  console.log('welcome again nodejs')
+})
+
+
 // test database
 // let Travel = require('./src/models/Travel')
 // let travel = new Travel({
@@ -40,8 +40,3 @@ app.use('/graphql', graphqlHTTP({
 // })
 
 // travel.save()
-
-// listen to PORT
-app.listen(process.env.PORT || 5000, () => {
-  console.log('welcome again nodejs')
-})
