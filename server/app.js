@@ -8,10 +8,6 @@ require('dotenv').config()
 // import database config
 require('./config/mongo')
 
-let root = {
-  auth_token: (args, req) => req.headers.auth_token
-}
-
 // run app
 const app = express()
 
@@ -21,8 +17,10 @@ app.use(cors())
 // graphql for handle requests
 app.use('/graphql', graphqlHTTP({
   schema,
-  rootValue: root,
-  graphiql: true
+  graphiql: true,
+  rootValue: {
+    auth_token: (args, req) => req.headers.auth_token
+  },
 }))
 
 // listen to PORT
