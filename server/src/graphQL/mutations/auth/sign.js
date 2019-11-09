@@ -16,6 +16,7 @@ const UserMutation = {
   type: UserType,
   args: {
     username: {type: GraphQLString},
+    email: {type: GraphQLString},
     phoneNumber: {type: GraphQLInt},
     imgUrl: {type: GraphQLString},
     password: {type: GraphQLString},
@@ -23,38 +24,34 @@ const UserMutation = {
   },
   async resolve(parent, args, context) {
     
-    try {
-      
-      // console.log(context.headers.auth_token);
+    let userPresenceState = await userPresence(args.username, args.email)
+    if (userPresenceState.length) {
+      throw new Error('hellllllll')
+    }
+    console.log(userPresenceState);
+    // console.log(context.headers.auth_token);
 
-      // user Modal
-      let user = new UserModel({
-        username: args.username,
-        phoneNumber: args.phoneNumber,
-        imgUrl: args.imgUrl,
-        password: await hashPassword(args.password),
-        wallet: args.wallet
-      })
-  
-      // save user
-      let userData = (await user.save()).toObject({ virtuals: true, minimize: true })
+    // user Modal
+    let user = new UserModel({
+      username: args.username,
+      phoneNumber: args.phoneNumber,
+      imgUrl: args.imgUrl,
+      password: await hashPassword(args.password),
+      wallet: args.wallet
+    })
 
-      // create Token
-      let tokens = await signToken({
-        id: userData.id,
-        username: userData.username,
-      })
+    // save user
+    let userData = (await user.save()).toObject({ virtuals: true, minimize: true })
 
-      return {
-        ...userData,
-        ...tokens
-      }
-      
-    } catch (error) {
-        return {
-          mssg: 'error in bla bla',
-          error
-        }
+    // create Token
+    let tokens = await signToken({
+      id: userData.id,
+      username: userData.username,
+    })
+
+    return {
+      ...userData,
+      ...tokens
     }
     
   }

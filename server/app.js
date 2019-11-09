@@ -18,14 +18,11 @@ app.use(cors())
 // graphql for handle requests
 app.use('/graphql', graphqlHTTP({
   schema,
-  graphiql: true
+  graphiql: true,
+  customFormatErrorFn(error) {
 
-  // for passing data in "parent" param  
-  // rootValue: {
-  //   userState: {
-          // loggedIn: bolean
-    // }
-  // },
+   return {message: error.message, status: error.status}
+  }
 }))
 
 // listen to PORT
