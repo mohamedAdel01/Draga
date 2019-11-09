@@ -24,7 +24,7 @@ const UserMutation = {
 
     try {
 
-      // arrange user Modal
+      // user Modal
       let user = new UserModel({
         username: args.username,
         phoneNumber: args.phoneNumber,
@@ -33,7 +33,7 @@ const UserMutation = {
         wallet: args.wallet
       })
   
-      // save user in DB
+      // save user
       let userData = (await user.save()).toObject({ virtuals: true, minimize: true })
 
       // create Token
