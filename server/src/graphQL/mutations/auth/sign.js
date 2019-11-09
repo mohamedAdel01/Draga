@@ -1,8 +1,10 @@
 const graphql = require('graphql')
 const {GraphQLInt, GraphQLFloat, GraphQLString} = graphql
 
+// sub-function as a models
 const { hashPassword } = require('../../../polices/authBcrypt')
 const { signToken } = require('../../../polices/authToken')
+const { userPresence } = require('../../../polices/authChecks')
 
 // GRAPHQL TYPES
 const {UserType} = require('../../types/index')
@@ -20,9 +22,10 @@ const UserMutation = {
     wallet: { type: GraphQLFloat }
   },
   async resolve(parent, args, context) {
-    console.log(context.headers.auth_token);
-
+    
     try {
+      
+      // console.log(context.headers.auth_token);
 
       // user Modal
       let user = new UserModel({

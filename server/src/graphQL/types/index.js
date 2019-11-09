@@ -10,6 +10,7 @@ const UserType = new GraphQLObjectType({
   fields: () => ({
     id: {type: GraphQLID},
     username: {type: GraphQLString},
+    email: {type: GraphQLString},
     phoneNumber: {type: GraphQLInt},
     imgUrl: {type: GraphQLString},
     password: {type: GraphQLString},
@@ -75,4 +76,5 @@ module.exports = {
   UserType,
   BikeType,
   StationType,
-TravelType}
+  TravelType
+}

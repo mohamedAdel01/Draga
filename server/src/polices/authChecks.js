@@ -1,14 +1,11 @@
-const UserModel = require('../../../models/User')
+const UserModel = require('../models/User')
 
 const userPresence = email => {
-  return new Promise((resolve, reject) => {
+  return new Promise(async (resolve, reject) => {
       try {
-          let user = UserModel.findOne({email: email})
-          console.log(user)
-          
-          resolve({
-            
-          })
+          let user = await UserModel.findOne({username: 'moamed'})
+          if (!user) resolve(false)
+          if (user) resolve(true)
       } catch (error) {
         reject(error)
       }
