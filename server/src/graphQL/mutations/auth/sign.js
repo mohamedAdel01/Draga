@@ -2,7 +2,7 @@ const graphql = require('graphql')
 const {GraphQLInt, GraphQLFloat, GraphQLString} = graphql
 
 const { hashPassword } = require('../../../polices/authBcrypt')
-const { signToken, verifyJwt } = require('../../../polices/authToken')
+const { signToken } = require('../../../polices/authToken')
 
 // GRAPHQL TYPES
 const {UserType} = require('../../types/index')
