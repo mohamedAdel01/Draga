@@ -1,5 +1,5 @@
 const graphql = require('graphql')
-const {GraphQLObjectType, GraphQLList, GraphQLInt, GraphQLFloat, GraphQLString, GraphQLID} = graphql
+const {GraphQLInt, GraphQLFloat, GraphQLString} = graphql
 
 const { hashPassword } = require('../../../polices/authBcrypt')
 const { signToken, verifyJwt } = require('../../../polices/authToken')
@@ -19,18 +19,8 @@ const UserMutation = {
     password: {type: GraphQLString},
     wallet: { type: GraphQLFloat }
   },
-  async resolve(parent, args) {
-
-    /*
-    
-      ** HINTS **
-    // ** CHECK if user is not loged in
-    // ** WE need first to check if this user is exist before
-    // ** WE need to make validation on inputs 
-    // ** WE need to make required inputs
-    // ** HANDLE errors and send it back to front-end
-
-    */
+  async resolve(parent, args, context) {
+    console.log(context.headers.auth_token);
 
     try {
 

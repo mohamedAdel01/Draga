@@ -17,24 +17,17 @@ app.use(cors())
 // graphql for handle requests
 app.use('/graphql', graphqlHTTP({
   schema,
-  graphiql: true,
-  rootValue: {
-    auth_token: (args, req) => req.headers.auth_token
-  },
+  graphiql: true
+
+  // for passing data in "parent" param  
+  // rootValue: {
+  //   userState: {
+          // loggedIn: bolean
+    // }
+  // },
 }))
 
 // listen to PORT
 app.listen(process.env.PORT || 5000, () => {
   console.log('welcome again nodejs')
 })
-
-
-// test database
-// let Travel = require('./src/models/Travel')
-// let travel = new Travel({
-//   stationFromId: 'String',
-//   UserId: 'String',
-//   bikeId: 'String',
-// })
-
-// travel.save()
