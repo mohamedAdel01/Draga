@@ -15,13 +15,23 @@ const app = express()
 // to access from another server
 app.use(cors())
 
+// let Travel = require('./src/models/Bike')
+// let travel = new Travel({
+//   type: "33333",
+//   imgUrl: "888",
+//   hourPrice: 1234,
+//   code: "A123"
+// })
+
+// travel.save()
+
 // graphql for handle requests
 app.use('/graphql', graphqlHTTP({
   schema,
   graphiql: true,
   customFormatErrorFn(error) {
 
-   return {message: error.message, status: error.status}
+    return { message: error.message, status: error.status }
   }
 }))
 
