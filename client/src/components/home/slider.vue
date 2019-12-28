@@ -1,5 +1,7 @@
 <template>
-  <section id="slider">slider</section>
+  <section id="slider">
+    
+  </section>
 </template>
 
 <script>
