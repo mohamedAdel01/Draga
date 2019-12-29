@@ -30,6 +30,7 @@ Vue.use(VueAxios, axios);
 Vue.use(window.VueCharts);
 Vue.use(VueFlashMessage);
 Vue.use(InfiniteLoading, {});
+//require("./assets/main.scss")
 
 new Vue({
   created() {
