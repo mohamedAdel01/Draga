@@ -1,20 +1,22 @@
 <template>
-  
   <nav id="navbar" class="col-12 d-flex justify-content-center align-items-center">
     <div class="col-9 d-flex justify-content-between">
       <h1>logo</h1>
-      <div id="navItems" :class="[{'d-none': hideNavItems} , 'col-lg-6 col-md-9 d-none d-md-flex align-items-center']">
-        <ul class="d-flex text-center col-12 justify-content-between mb-0">
-           <li>Home</li>
-           <li>About</li>
-           <li>Download</li>
-           <li>Register</li>
-           <li>Login</li>
+      <div
+        id="navItems"
+        :class="[{'d-none': hideNavItems} , 'col-lg-6 col-md-9 d-md-flex align-items-center']"
+      >
+        <ul class="d-lg-flex text-center col-12 justify-content-between mb-0">
+          <li>Home</li>
+          <li>About</li>
+          <li>Download</li>
+          <li>Register</li>
+          <li>Login</li>
         </ul>
       </div>
       <div class="burger-btn" @click="hideNavItems = !hideNavItems">
         <div class="d-flex d-md-none">
-          <img src="../../assets/img/list.svg">
+          <img src="../../assets/img/list.svg" />
         </div>
       </div>
     </div>
@@ -23,7 +25,7 @@
 
 <script>
 export default {
-   data() {
+  data() {
     return {
       hideNavItems: false
     };
@@ -34,41 +36,36 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 #navbar {
   .burger-btn {
     display: none;
   }
-  background:  rgb(28, 42, 48);;
+  background: rgb(28, 42, 48);
   height: 70px;
-  h1{
-      color: white;
+  h1 {
+    color: white;
   }
   ul {
     li {
       list-style: none;
-       padding: 10px;
+      padding: 10px;
       cursor: pointer;
-       color: white;
+      color: white;
       a {
         text-decoration: none;
-       
       }
-      
     }
   }
-  img{
+  img {
     width: 50px;
     height: 30px;
   }
-
-
-  
 }
 
 @media screen and (max-width: 767px) {
   #navbar {
-    background:  rgb(28, 42, 48);
+    background: rgb(28, 42, 48);
     .burger-btn {
       display: block;
       position: absolute;
@@ -79,10 +76,11 @@ export default {
     }
     #navItems {
       position: absolute;
-      background:  rgb(28, 42, 48);;
+      background: rgb(28, 42, 48);
       z-index: 1;
       width: 100%;
       top: 60px;
+      left: 0;
       ul {
         li {
           &:hover {
